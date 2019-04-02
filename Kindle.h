@@ -11,6 +11,7 @@ public:
     ~Kindle();
     void lerLivro();
     void addLivro();
+    void removerLivro();
 private:
     int numeroLivros();
 };
