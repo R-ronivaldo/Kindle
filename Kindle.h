@@ -1,19 +1,18 @@
 #ifndef KINDLE_H
 #define KINDLE_H
-#define <string.h>
+#include <string.h>
+#include <iostream>
 
 using std::string;
 
-class Kindle (string)
+class Kindle
 {
 public:
     Kindle();
     ~Kindle();
     void lerLivro();
-    void addLivro();
-    void removerLivro();
 private:
-    int numeroLivros();
+    int nomeLivro();
 };
 
 #endif // KINDLE_H
