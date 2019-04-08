@@ -8,9 +8,12 @@ using std::string;
 class Kindle
 {
 public:
+    Kindle(string);
     Kindle();
     ~Kindle();
-    void lerLivro();
+    void setNomeLivro(string);
+    void getNomeLivro(string);
+    void getNomeLivro();
 private:
     int nomeLivro();
 };
