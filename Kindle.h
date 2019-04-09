@@ -15,7 +15,7 @@ public:
     void getNomeLivro(string);
     void getNomeLivro();
 private:
-    int nomeLivro();
+    int nomeLivro;
 };
 
 #endif // KINDLE_H
