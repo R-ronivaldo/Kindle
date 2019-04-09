@@ -8,14 +8,18 @@ using std::string;
 class Kindle
 {
 public:
-    Kindle(string);
+    :Kindle(const string,int,const string,int);
     Kindle();
     ~Kindle();
-    void setNomeLivro(string);
-    void getNomeLivro(string);
-    void getNomeLivro();
+    void setLivro(const string,int,const string,int);
+    void setNomeLivro() const;
+    void getLivro(const string,int,const string,int) const;
 private:
     string nomeLivro;
+    int idLivro;
+    string autorLivro;
+    int anoLivro;
+    
 };
 
 #endif // KINDLE_H
