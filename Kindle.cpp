@@ -16,11 +16,7 @@ void Kindle::setNomeLivro(string x){
     nomeLivro = x;
 }
 
-void Kindle::getNomeLivro (string z){
-    cin << nomeLivro << endl;
-}
-
-void Kindle::getNomeLivro(){
+void Kindle::setNomeLivro (){
     cin << "Nenhum Nome de livro foi setado" << endl;
 }
 
