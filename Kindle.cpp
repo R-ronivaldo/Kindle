@@ -5,10 +5,11 @@ using std::cout;
 using std::endl;
 using std::cin;
 
-Kindle::Kindle(){
-	
+Kindle::Kindle(string &nome){
+	setNomeLivro(nome);
+
 }
 
-void Kinlde::setNomeLivro(){
-
+void Kinlde::setNomeLivro(string &nome){
+    cin << nome << endl;
 }	

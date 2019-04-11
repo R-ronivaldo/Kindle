@@ -6,14 +6,14 @@
 ProjectName            :=Kindle
 ConfigurationName      :=Debug
 WorkspacePath          :=C:/Users/Kurumi/Documents/LeitorLivro
-ProjectPath            :=C:/Users/Kurumi/Documents/Kindle
+ProjectPath            :=C:/Users/Kurumi/Documents/LeitorLivro/Kindle
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Kurumi
-Date                   :=03/04/2019
+Date                   :=10/04/2019
 CodeLitePath           :="C:/Program Files/CodeLite"
 LinkerName             :="C:/Program Files (x86)/CodeBlocks/MinGW/bin/g++.exe"
 SharedObjectLinkerName :="C:/Program Files (x86)/CodeBlocks/MinGW/bin/g++.exe" -shared -fPIC
@@ -94,7 +94,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/Kurumi/Documents/Kindle/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/Kurumi/Documents/LeitorLivro/Kindle/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM main.cpp
 
@@ -102,7 +102,7 @@ $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix)main.cpp
 
 $(IntermediateDirectory)/Kindle.cpp$(ObjectSuffix): Kindle.cpp $(IntermediateDirectory)/Kindle.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/Kurumi/Documents/Kindle/Kindle.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Kindle.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/Kurumi/Documents/LeitorLivro/Kindle/Kindle.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Kindle.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/Kindle.cpp$(DependSuffix): Kindle.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Kindle.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Kindle.cpp$(DependSuffix) -MM Kindle.cpp
 

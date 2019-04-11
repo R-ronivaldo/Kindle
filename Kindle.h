@@ -10,12 +10,9 @@ class Kindle
 {
 public:
     
-    Kindle(string &nome, int id, string &autor, int ano);
+    Kindle(string);
 	void setNomeLivro(string);
 
-	~Kindle();
-	
-};
     
     ~Kindle();
     

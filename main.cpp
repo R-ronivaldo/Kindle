@@ -7,8 +7,6 @@ using std::string;
 
 int main(int argc, char **argv)
 {
-	Kindle myKindle("Harry Potter");
-	Kindle myKindle2();
-	
+	Kindle myKindle("Harry Potter",);
     return 0;
 }
