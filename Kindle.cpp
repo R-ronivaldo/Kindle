@@ -1,15 +1,61 @@
 #include "Kindle.h"
+#include "Biblioteca.h"
 #include <iostream>
+#include <string>
 
+using std::string;
 using std::cout;
-using std::endl;
 using std::cin;
+using std::endl;
 
-Kindle::Kindle(string &nome){
-	setNomeLivro(nome);
+int Kindle::totalDeUser = 0;
 
+Kindle::Kindle(const string &USER)
+{
+	if (USER != " "){
+			setUser(USER);
+	}	else{
+			cout << "Usuário informado é inválido" << endl;
+		}
 }
 
-void Kinlde::setNomeLivro(string &nome){
-    cin << nome << endl;
-}	
+Kindle::Kindle()
+{
+	string user;
+	
+	user = "admin";
+	
+	setUser(user);
+}
+
+Kindle::Kindle(const Kindle &LINK)
+{
+	this->usuario = LINK.usuario;
+	this->livros = LINK.livros;
+}
+
+Kindle::~Kindle(){
+	
+	string user = "";
+	
+	setUser(user);
+	
+	this->totalDeUser--;
+}
+
+void Kindle::setUser(const string &USER){
+	if (totalDeUser < NUMEROTOTALUSUARIOS){
+		this->usuario = USER;
+		
+		this->totalDeUser++;
+		
+		getUser();
+	}else{
+		cout << "Total de usuários excedido!" << endl;
+	}
+}
+
+void Kindle::getUser() const {
+	cout << "Bem vindo " << this->usuario << "ao seu Kindle" << endl;
+	cout << "Você tem " << this->livros << "na sua biblioteca" << endl;
+}

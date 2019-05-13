@@ -1,12 +1,12 @@
 #include "Kindle.h"
-#include <stdio.h>
 #include <iostream>
 #include <string>
+
+using std::cout;
+using std::cin;
+using std::endl;
 using std::string;
 
 
-int main(int argc, char **argv)
-{
-	Kindle myKindle("Harry Potter",);
-    return 0;
+int main(int argc, char** argv) {
 }
