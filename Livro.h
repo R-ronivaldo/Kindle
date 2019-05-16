@@ -1,29 +1,31 @@
 #ifndef LIVRO_H
 #define LIVRO_H
-
 #include <string>
 using std::string;
+
 
 class Livro
 {
 	public:
-	
-		Livro(const string &, const string &);
+		Livro(const string &,const string &, const string &);
 		Livro();
 		Livro(const Livro &);
 		~Livro();
 		
-		void setLivro (const string &, const string &);
-		void getLivro() const;
-		void setBiblioteca(const string &,const string &);
+		//Get/Set
+		string getNomeLivro();
+		void setNomeLivro(const string &);
 		
-	private:	
-	
+		string getAutorLivro();
+		void setAutorLivro(const string &);
+		
+		string getGeneroLivro();
+		void setGeneroLivro(const string &);
+		
+	private:
 		string nomeLivro;
-		string estanteLivro;
-		
-		static const int NUMEROTOTALLIVRO=100;
-		static int totalLivrosEstante;
+		string autorLivro;
+		string generoLivro;
 };
 
 #endif

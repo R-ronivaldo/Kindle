@@ -7,49 +7,55 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-int Livro::totalLivrosEstante = 0;
+static int restricao = true;
 
-Livro::Livro(const string &NOME, const string &ESTANTE){
-		
-	setLivro(NOME, ESTANTE);
+Livro::Livro(const string &no, const string &au, const string &ge){
+	setNomeLivro(no);
+	setAutorLivro(au);
+	setGeneroLivro(ge);
 }
-
 Livro::Livro(){
-			
-	setLivro("Desconhecido", "Desconhecido");
-		
-	cout << "\\\\\\Setando livro Padrão//////" << endl;
+	const string no = "Desconhecido";
+	const string au = "Desconhecido";
+	const string ge = "Desconhecido";
+	
+	setNomeLivro(no);
+	setAutorLivro(au);
+	setGeneroLivro(ge);
+	
 }
 
-Livro::Livro(const Livro &LINK2){
-	{
-	this->nomeLivro = LINK2.nomeLivro;
-	this->estanteLivro = LINK2.estanteLivro;
+Livro::Livro(const Livro &link){
 	
-	this->totalLivrosEstante++;
-}
+	nomeLivro = link.nomeLivro;
+	autorLivro = link.autorLivro;
+	generoLivro = link.generoLivro;
+	
 }
 
 Livro::~Livro(){
-	this->totalLivrosEstante--;
+
 }
+		
+//Get/Set
 
-void Livro::setLivro (const string &NOME, const string &ESTANTE){
-	this->nomeLivro = NOME;
-	this->estanteLivro = ESTANTE;
-
-	this->totalLivrosEstante++;
-	cout << "\\\\\\Livro adicionado com sucesso!//////" << endl;
-	
-	setBiblioteca(ESTANTE);
+string Livro::getNomeLivro(){
+	return nomeLivro;
 }
-
-void Livro::getLivro() const{
-	
-	cout << "Livro : " << nomeLivro << endl;
-	cout << "Estante : " << estanteLivro << endl;
+void Livro::setNomeLivro(const string &no){	
+	this->nomeLivro = no;
 }
-
-void Livro::setBiblioteca(const string &NOME, const string &ESTANTE){
-		// vai adicionar o livro na estante da classe biblioteca de acordo com o genero
+		
+string Livro::getAutorLivro(){
+	return autorLivro;
+}
+void Livro::setAutorLivro(const string &au){
+	this->autorLivro = au;
+}
+		
+string Livro::getGeneroLivro(){
+	return generoLivro;
+}
+void Livro::setGeneroLivro(const string &ge){
+	this->generoLivro = ge;
 }

@@ -1,61 +1,48 @@
 #include "Kindle.h"
 #include "Biblioteca.h"
 #include <iostream>
-#include <string>
+#include <stdio.h>
+#include <string.h>
 
 using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
 
-int Kindle::totalDeUser = 0;
-
-Kindle::Kindle(const string &USER)
-{
-	if (USER != " "){
-			setUser(USER);
-	}	else{
-			cout << "Usuário informado é inválido" << endl;
-		}
+Kindle::Kindle(const string &nu,Biblioteca &biblioteca){
+	setUser(nu);
+	setBiblioteca(biblioteca);
 }
 
-Kindle::Kindle()
-{
-	string user;
+Kindle::Kindle(){
+	string nu = "Desconhecido";
+	setUser(nu);
 	
-	user = "admin";
-	
-	setUser(user);
+	cout << "Biblioteca não adicionada!" << endl;
 }
 
-Kindle::Kindle(const Kindle &LINK)
-{
-	this->usuario = LINK.usuario;
-	this->livros = LINK.livros;
+Kindle::Kindle(const Kindle &link3){
+	this->user = link3.user;
+	this->biblioteca = link3.biblioteca; 
 }
 
 Kindle::~Kindle(){
-	
-	string user = "";
-	
-	setUser(user);
-	
-	this->totalDeUser--;
+
 }
 
-void Kindle::setUser(const string &USER){
-	if (totalDeUser < NUMEROTOTALUSUARIOS){
-		this->usuario = USER;
-		
-		this->totalDeUser++;
-		
-		getUser();
-	}else{
-		cout << "Total de usuários excedido!" << endl;
-	}
+string Kindle::getUser(){
+	return user;
+	
 }
 
-void Kindle::getUser() const {
-	cout << "Bem vindo " << this->usuario << "ao seu Kindle" << endl;
-	cout << "Você tem " << this->livros << "na sua biblioteca" << endl;
+void Kindle::setUser(const string &nu){
+	this->user = nu;
+}
+
+Biblioteca Kindle::getBiblioteca(){
+	return biblioteca;
+}
+
+void Kindle::setBiblioteca(Biblioteca &bi){
+	this->biblioteca = bi;
 }
