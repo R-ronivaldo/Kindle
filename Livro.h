@@ -21,6 +21,10 @@ class Livro
 		
 		string getGeneroLivro();
 		void setGeneroLivro(const string &);
+		//Fim Get/Set
+		
+		void status() const;
+		void imprimirLivro() const;
 		
 	private:
 		string nomeLivro;

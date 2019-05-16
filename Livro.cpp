@@ -1,6 +1,7 @@
 #include "Livro.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
 using std::string;
 using std::cout;
@@ -15,9 +16,9 @@ Livro::Livro(const string &no, const string &au, const string &ge){
 	setGeneroLivro(ge);
 }
 Livro::Livro(){
-	const string no = "Desconhecido";
-	const string au = "Desconhecido";
-	const string ge = "Desconhecido";
+	const string no = "Desconhecidooo";
+	const string au = "Desconhecidooo";
+	const string ge = "Desconhecidooo";
 	
 	setNomeLivro(no);
 	setAutorLivro(au);
@@ -30,7 +31,6 @@ Livro::Livro(const Livro &link){
 	nomeLivro = link.nomeLivro;
 	autorLivro = link.autorLivro;
 	generoLivro = link.generoLivro;
-	
 }
 
 Livro::~Livro(){
@@ -58,4 +58,20 @@ string Livro::getGeneroLivro(){
 }
 void Livro::setGeneroLivro(const string &ge){
 	this->generoLivro = ge;
+}
+
+//Fim Get/Set
+
+void Livro::status() const {
+	cout << "Livro " << this->nomeLivro << " adicionado com sucesso!" << endl; 
+}
+
+void Livro::imprimirLivro() const{
+	
+	cout << "###########################" << endl;
+	cout<< "Livro :" << nomeLivro << endl;
+	cout<< "Autor :" << autorLivro << endl;
+	cout<< "Genero :" << generoLivro << endl;
+	cout << "###########################" << endl;
+	
 }

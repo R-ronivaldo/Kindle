@@ -6,32 +6,35 @@
 #include <iostream>
 #include <string>
 
+
 using std::string;
 
 
 class Biblioteca
 {
 	public:
-		Biblioteca(const string &, const Livro &);
+		Biblioteca(const string &);
 		Biblioteca();
 		Biblioteca(const Biblioteca &);
 		~Biblioteca();
-		
-		bool verificarLocatacao();
 		
 		//Get/Set
 		string getNomeBiblio();
 		void setNomeBiblio(const string &);
 		
-		Livro getLivro();
-		void setLivro(const Livro &);
+		Livro getLivro();		
+		void addLivro(const Livro &);
 		
 		int retornaQLivros();
+		
+		void imprimeBiblio();
+		void imprimeLivros();
 		
 	private:
 		string nomeBiblio;
 		Livro livro;
 		
+		static int numDeLivrosAtivos;
 		static const int MAXLIVROS = 100;
 		Livro lLivros[MAXLIVROS];
 };

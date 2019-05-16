@@ -3,23 +3,22 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+#include <vector>
+#include <cstdlib>
 
 using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
 
-Biblioteca::Biblioteca(const string &no, const Livro &li){
-	if (verificarLocatacao() == false){
+int Biblioteca::numDeLivrosAtivos = 0;
+
+Biblioteca::Biblioteca(const string &no){
 		setNomeBiblio(no);
-		setLivro(li);
-	} else {
-		cout << "Votação Máxima" << endl;
-	}
 }
 
 Biblioteca::Biblioteca(){
-	string no = "Desconhecido";
+	string no = "Vazio";
 	
 	setNomeBiblio(no);
 
@@ -27,18 +26,9 @@ Biblioteca::Biblioteca(){
 
 Biblioteca::Biblioteca(const Biblioteca &link2){
 	this->nomeBiblio = link2.nomeBiblio;
-	this->livro = link2.livro;
 }
 
 Biblioteca::~Biblioteca(){
-}
-
-bool Biblioteca::verificarLocatacao(){
-	if (MAXLIVROS >= 100){
-		return true;
-	} else {
-		return false;
-	}
 }
 
 
@@ -51,28 +41,33 @@ void Biblioteca::setNomeBiblio(const string &no){
 	this->nomeBiblio = no;
 }
 
+///////////////////////////////////////////////////////////////////////
 
 Livro Biblioteca::getLivro(){
 	return livro;
 }
 
-void Biblioteca::setLivro(const Livro &li){
-
-	int i = retornaQLivros();
+void Biblioteca::addLivro(const Livro &li) {
 	
 	this->livro = li;
 	
-	this->lLivros[i] = livro;
+	this->lLivros[numDeLivrosAtivos] = livro;
+	cout << "Livro '" << this->lLivros[numDeLivrosAtivos].getNomeLivro() << "' adicionado com sucesso!" << endl;
+	numDeLivrosAtivos++;
+
 }
 
-int Biblioteca::retornaQLivros(){
-	int i=0,cont=0;
+////////////////////////////////////////////////////////////////
+
+void Biblioteca::imprimeBiblio(){
 	
-	for (i=0;i<=MAXLIVROS;i++){
-		if (this->lLivros[i].getNomeLivro() == ""){
-			cont++;
-		}
-	}
-	cont = (6-cont);
-	return cont;
+	cout << "Biblioteca : " << this->nomeBiblio << endl;
 }
+
+void Biblioteca::imprimeLivros() {
+	int i=0;
+	for (i=0;i<=numDeLivrosAtivos;i++){
+	cout << lLivros[i].getNomeLivro() << endl;
+	}
+}
+

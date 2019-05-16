@@ -3,27 +3,26 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+#include <vector>
 
 using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
 
-Kindle::Kindle(const string &nu,Biblioteca &biblioteca){
+int Kindle::numDeUserAtivos = 0;
+
+Kindle::Kindle(const string &nu){
 	setUser(nu);
-	setBiblioteca(biblioteca);
 }
 
 Kindle::Kindle(){
 	string nu = "Desconhecido";
 	setUser(nu);
-	
-	cout << "Biblioteca não adicionada!" << endl;
 }
 
 Kindle::Kindle(const Kindle &link3){
 	this->user = link3.user;
-	this->biblioteca = link3.biblioteca; 
 }
 
 Kindle::~Kindle(){
@@ -37,12 +36,33 @@ string Kindle::getUser(){
 
 void Kindle::setUser(const string &nu){
 	this->user = nu;
+	numDeUserAtivos++;
 }
 
 Biblioteca Kindle::getBiblioteca(){
 	return biblioteca;
 }
 
-void Kindle::setBiblioteca(Biblioteca &bi){
+
+
+void Kindle::addBiblioteca(Biblioteca &bi){
 	this->biblioteca = bi;
+	
+	cout << "Biblioteca " << this->biblioteca.getNomeBiblio() << " adicionada com sucesso ao usuario " << endl;
+}
+
+void Kindle::imprimirUser() const {
+	int i;
+	
+	for (i=1;i<=MAXUSER;i++){
+	cout << "Usuario : " << this->user << endl;
+	}
+}
+
+void Kindle::status(){
+	
+	cout << "Usuario : " << this->user << endl;
+	cout << "Biblioteca : " << this->biblioteca.getNomeBiblio() << endl;
+	cout << "Livros da biblioteca:" << endl;
+	biblioteca.imprimeLivros();
 }
