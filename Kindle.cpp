@@ -63,6 +63,4 @@ void Kindle::status(){
 	
 	cout << "Usuario : " << this->user << endl;
 	cout << "Biblioteca : " << this->biblioteca.getNomeBiblio() << endl;
-	cout << "Livros da biblioteca:" << endl;
-	biblioteca.imprimeLivros();
 }

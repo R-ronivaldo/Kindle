@@ -52,7 +52,7 @@ void Biblioteca::addLivro(const Livro &li) {
 	this->livro = li;
 	
 	this->lLivros[numDeLivrosAtivos] = livro;
-	cout << "Livro '" << this->lLivros[numDeLivrosAtivos].getNomeLivro() << "' adicionado com sucesso!" << endl;
+	cout << "Livro '" << this->lLivros[numDeLivrosAtivos].getNomeLivro() << "' adicionado na biblioteca com sucesso!" << endl;
 	numDeLivrosAtivos++;
 
 }
@@ -66,8 +66,8 @@ void Biblioteca::imprimeBiblio(){
 
 void Biblioteca::imprimeLivros() {
 	int i=0;
-	for (i=0;i<=numDeLivrosAtivos;i++){
-	cout << lLivros[i].getNomeLivro() << endl;
+	for (i=0;i<=(numDeLivrosAtivos-1);i++){
+	cout << "Nome do " << (i+1) << "o Livro: " << lLivros[i].getNomeLivro() << endl;
 	}
 }
 

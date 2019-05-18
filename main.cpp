@@ -12,21 +12,33 @@ using std::endl;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
-	Kindle kindle1 ("JrKindle");
+	string objL,objB,no,au,ge;
+	
+	cout << "Insira o nome do Usuario :";
+	cin >> objL;
+	Kindle kindle1 (objL);
 	kindle1.imprimirUser();
 	
-	Biblioteca biblio1("Saraiva");
-	
-	Livro livro1("Harry Potter", "J.K", "Fantasia");
-	Livro livro2("Nine Tomorrows", "Isaac Asimov", "Conto");
-	Livro livro3("The Black Circle", "Patrick Carman", "Fantasia");
-	
-	
+	cout << "Insira o nome da Biblioteca :";
+	cin >> objB;
+	Biblioteca biblio1(objB);
+	biblio1.imprimeLivros();
 	kindle1.addBiblioteca(biblio1);
-	biblio1.addLivro(livro1);
-	biblio1.addLivro(livro2);
-	biblio1.addLivro(livro3);
+	cout << endl;
 	
-	kindle1.status();
+	cout << "Insira as informações do Livro." << endl;
+	cout << "Insira o nome do livro: ";
+	cin >> no;
+	
+	cout << "Insira o autor do livro: ";
+	cin >> au;
+	
+	cout << "Insira o genero do livro: ";
+	cin >> ge;
+	Livro livro1(no, au, ge);
+	
+	biblio1.addLivro(livro1);
+	
+	biblio1.imprimeLivros();
 	
 }
