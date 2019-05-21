@@ -40,5 +40,8 @@ int main(int argc, char** argv) {
 	biblio1.addLivro(livro1);
 	
 	biblio1.imprimeLivros();
+	cout << "**********************************" << endl;
+	livro1.imprimirLivro();
+	cout << livro1;
 	
 }

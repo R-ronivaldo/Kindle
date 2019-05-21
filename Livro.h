@@ -1,11 +1,13 @@
 #ifndef LIVRO_H
 #define LIVRO_H
 #include <string>
+#include <iostream>
 using std::string;
-
+using std::ostream;
 
 class Livro
 {
+	friend ostream &operator<<(ostream &, const Livro &);
 	public:
 		Livro(const string &,const string &, const string &);
 		Livro();

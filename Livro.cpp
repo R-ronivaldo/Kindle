@@ -66,6 +66,14 @@ void Livro::status() const {
 	cout << "Livro " << this->nomeLivro << " adicionado com sucesso!" << endl; 
 }
 
+ostream &operator<<(ostream	 &output, const Livro &livro){
+	output << "Nome Livro: " << livro.nomeLivro << "."
+	<< "Autor do Livro: "<< livro.autorLivro << "."
+	<< "Genero do Livro: " << livro.generoLivro << ".";
+	
+	return output; 
+}
+
 void Livro::imprimirLivro() const{
 	
 	cout << "###########################" << endl;
