@@ -2,12 +2,14 @@
 #define KINDLE_H
 
 #include "Biblioteca.h"
-
+#include <iostream>
 #include <string>
 using std::string;
+using std::ostream;
 
 class Kindle
 {
+	friend ostream &operator<<(ostream &, const Kindle &);
 	public:
 		Kindle(const string &);
 		Kindle();

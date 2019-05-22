@@ -5,6 +5,7 @@
 #include <string.h>
 #include <vector>
 
+using std::ostream;
 using std::string;
 using std::cout;
 using std::cin;
@@ -49,6 +50,11 @@ void Kindle::addBiblioteca(Biblioteca &bi){
 	this->biblioteca = bi;
 	
 	cout << "Biblioteca " << this->biblioteca.getNomeBiblio() << " adicionada com sucesso ao usuario " << endl;
+}
+
+ostream &operator<<(ostream &output, const Kindle &kindle){
+	output << "Usuario: " << kindle.user << endl;
+	return output;
 }
 
 void Kindle::imprimirUser() const {

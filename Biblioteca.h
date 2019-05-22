@@ -6,12 +6,13 @@
 #include <iostream>
 #include <string>
 
-
+using std::ostream;
 using std::string;
 
 
 class Biblioteca
 {
+	friend ostream &operator<<(ostream &, const Biblioteca &);
 	public:
 		Biblioteca(const string &);
 		Biblioteca();
@@ -29,6 +30,8 @@ class Biblioteca
 		
 		void imprimeBiblio();
 		void imprimeLivros();
+		
+		bool operator==(const Biblioteca &)const;
 		
 	private:
 		string nomeBiblio;

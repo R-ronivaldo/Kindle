@@ -68,8 +68,8 @@ void Livro::status() const {
 
 ostream &operator<<(ostream	 &output, const Livro &livro){
 	output << "Nome Livro: " << livro.nomeLivro << "."
-	<< "Autor do Livro: "<< livro.autorLivro << "."
-	<< "Genero do Livro: " << livro.generoLivro << ".";
+	<< endl << "Autor do Livro: "<< livro.autorLivro << "."
+	<< endl << "Genero do Livro: " << livro.generoLivro << "." << endl;
 	
 	return output; 
 }
@@ -83,3 +83,17 @@ void Livro::imprimirLivro() const{
 	cout << "###########################" << endl;
 	
 }
+
+bool Livro::operator==(const Livro &livro)const{
+	if (nomeLivro != livro.nomeLivro || autorLivro != livro.autorLivro || generoLivro != livro.generoLivro) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+bool Livro::operator!=(const Livro &livro)const{
+	return ! (*this == livro);
+}
+
+

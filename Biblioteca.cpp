@@ -59,6 +59,11 @@ void Biblioteca::addLivro(const Livro &li) {
 
 ////////////////////////////////////////////////////////////////
 
+ostream &operator<<(ostream &output, const Biblioteca &biblioteca){
+	output << "Biblioteca :" << biblioteca.nomeBiblio << endl;
+	return output;
+}
+
 void Biblioteca::imprimeBiblio(){
 	
 	cout << "Biblioteca : " << this->nomeBiblio << endl;
@@ -71,3 +76,10 @@ void Biblioteca::imprimeLivros() {
 	}
 }
 
+bool Biblioteca::operator==(const Biblioteca &biblioteca)const{
+	if (nomeBiblio != biblioteca.nomeBiblio){
+		return false;
+	} else {
+		return true;
+	}
+}
