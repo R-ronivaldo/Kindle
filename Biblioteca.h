@@ -23,23 +23,24 @@ class Biblioteca
 		string getNomeBiblio();
 		void setNomeBiblio(const string &);
 		
-		Livro getLivro();		
-		void addLivro(const Livro &);
-		
-		int retornaQLivros();
-		
 		void imprimeBiblio();
-		void imprimeLivros();
+		void imprimeLLivros();
 		
 		bool operator==(const Biblioteca &)const;
+		const Biblioteca &operator=(const Biblioteca &);
+		Livro &operator[](int);
+		Livro operator[](int subscript)const;
+		void cadastrarLista(const Livro &);
+		void adicionarLivro(const Livro &);
 		
 	private:
 		string nomeBiblio;
-		Livro livro;
 		
 		static int numDeLivrosAtivos;
 		static const int MAXLIVROS = 100;
-		Livro lLivros[MAXLIVROS];
+		
+		Livro *lLivros;
+		int quantLivros;
 };
 
 #endif

@@ -15,16 +15,26 @@ int Biblioteca::numDeLivrosAtivos = 0;
 
 Biblioteca::Biblioteca(const string &no){
 		setNomeBiblio(no);
+		this->quantLivros = 0;
 }
 
 Biblioteca::Biblioteca(){
 	string no = "Vazio";
 	
 	setNomeBiblio(no);
+	this->quantLivros = 0;
 
 }
 
-Biblioteca::Biblioteca(const Biblioteca &link2){
+Biblioteca::Biblioteca(const Biblioteca &link2)
+ : quantLivros (link2.quantLivros)
+{
+	lLivros = new Livro[ quantLivros ];
+	
+	for (int i=0;i<quantLivros;i++)
+		this->lLivros[i] = link2.lLivros[i];
+		
+		
 	this->nomeBiblio = link2.nomeBiblio;
 }
 
@@ -34,52 +44,120 @@ Biblioteca::~Biblioteca(){
 
 
 string Biblioteca::getNomeBiblio(){
-	return nomeBiblio;
+	return this->nomeBiblio;
 }
 
 void Biblioteca::setNomeBiblio(const string &no){
 	this->nomeBiblio = no;
 }
 
-///////////////////////////////////////////////////////////////////////
-
-Livro Biblioteca::getLivro(){
-	return livro;
+void Biblioteca::imprimeBiblio(){
+	
+	cout << "+++++ Informações sobre a Biblioteca +++++" << endl;
+	cout << "Nome da biblioteca : " << this->nomeBiblio << endl;
+	imprimeLLivros();
 }
 
-void Biblioteca::addLivro(const Livro &li) {
-	
-	this->livro = li;
-	
-	this->lLivros[numDeLivrosAtivos] = livro;
-	cout << "Livro '" << this->lLivros[numDeLivrosAtivos].getNomeLivro() << "' adicionado na biblioteca com sucesso!" << endl;
-	numDeLivrosAtivos++;
-
+void Biblioteca::imprimeLLivros()
+{
+	for (int i=0;i<quantLivros;i++)
+	{
+		cout << "Nome do "<< i+1 << " Livro : " << this->lLivros[i].getNomeLivro() << endl;	
+	}
 }
 
 ////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+void Biblioteca::cadastrarLista(const Livro &livro){
+		quantLivros++;
+		lLivros = new Livro[quantLivros];
+		lLivros[0] = livro;
+		numDeLivrosAtivos++;
+}
+
+void Biblioteca::adicionarLivro(const Livro &livro){
+		
+	if (quantLivros == 0){
+		cadastrarLista(livro);
+	} else {
+		
+		Livro *aux2 = new Livro[quantLivros];
+		
+		for(int i = 0; i < quantLivros; i++){
+			aux2[i] = lLivros[i];
+			}
+			
+		delete [] lLivros;
+		
+		lLivros = new Livro[quantLivros+1];
+		
+		for(int i = 0; i < quantLivros; i++){
+			lLivros[i] = aux2[i];
+		}
+			
+		lLivros[quantLivros] = livro;
+		
+		delete [] aux2;
+		
+			numDeLivrosAtivos++;
+			quantLivros++;
+	}
+}
 
 ostream &operator<<(ostream &output, const Biblioteca &biblioteca){
 	output << "Biblioteca :" << biblioteca.nomeBiblio << endl;
 	return output;
 }
 
-void Biblioteca::imprimeBiblio(){
-	
-	cout << "Biblioteca : " << this->nomeBiblio << endl;
-}
-
-void Biblioteca::imprimeLivros() {
-	int i=0;
-	for (i=0;i<=(numDeLivrosAtivos-1);i++){
-	cout << "Nome do " << (i+1) << "o Livro: " << lLivros[i].getNomeLivro() << endl;
-	}
-}
-
 bool Biblioteca::operator==(const Biblioteca &biblioteca)const{
-	if (nomeBiblio != biblioteca.nomeBiblio){
+	if (quantLivros != biblioteca.quantLivros)
 		return false;
-	} else {
-		return true;
+	
+	for (int i=0;i<quantLivros;i++)
+		if (lLivros[i] != biblioteca.lLivros[i])
+			return false;
+		
+	return true;
+}
+
+const Biblioteca &Biblioteca::operator= (const Biblioteca &linkBiblio)
+{
+	if (&linkBiblio != this)
+		nomeBiblio = linkBiblio.nomeBiblio;
+	{
+		if (quantLivros != linkBiblio.quantLivros)
+		{
+			delete [] lLivros;
+			quantLivros = linkBiblio.quantLivros;
+			lLivros = new Livro[ quantLivros ];
+		}
+		
+		for (int i=0; i < quantLivros; i++)
+			lLivros[i] = linkBiblio.lLivros[i];
 	}
+	return *this;
+}
+
+Livro &Biblioteca::operator[](int subscript){
+	if (subscript < 0 || subscript >= quantLivros)
+	{
+		cout << "\nErro: Subscript " << subscript
+		<< " fora de alcance" << endl;
+		exit(1);
+	}
+	
+	return lLivros[subscript];
+}
+
+Livro Biblioteca::operator[](int subscript)const
+{
+	if (subscript < 0 || subscript >= quantLivros)
+	{
+		cout << "\nErro: Subscript " << subscript
+		<< " fora de alcance" << endl;
+		exit(1);
+	}
+	
+	return lLivros[subscript];
 }
