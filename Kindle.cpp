@@ -15,15 +15,26 @@ int Kindle::numDeUserAtivos = 0;
 
 Kindle::Kindle(const string &nu){
 	setUser(nu);
+	this->quantBiblio = 0;
 }
 
 Kindle::Kindle(){
 	string nu = "Desconhecido";
 	setUser(nu);
+	this->quantBiblio = 0;
 }
 
-Kindle::Kindle(const Kindle &link3){
+Kindle::Kindle(const Kindle &link3)
+ : quantBiblio(link3.quantBiblio)
+{
+	lBiblioteca = new Biblioteca[ quantBiblio ];
+		
+	for (int i=0;i<quantBiblio;i++)
+		this->lBiblioteca[i] = link3.lBiblioteca[i];
+		
 	this->user = link3.user;
+	
+	
 }
 
 Kindle::~Kindle(){
@@ -40,16 +51,46 @@ void Kindle::setUser(const string &nu){
 	numDeUserAtivos++;
 }
 
-Biblioteca Kindle::getBiblioteca(){
-	return biblioteca;
+void Kindle::cadastrarLista(const Biblioteca &bi){
+	
+	quantBiblio++;
+	lBiblioteca = new Biblioteca[quantBiblio];
+	lBiblioteca[0] = bi;
+		
+		
+	cout << "A Biblioteca '" << lBiblioteca[0].getNomeBiblio() << "' foi adicionada ao usuario com sucesso!" << endl;
+		
+	numDeUserAtivos++;
 }
 
-
-
-void Kindle::addBiblioteca(Biblioteca &bi){
-	this->biblioteca = bi;
+void Kindle::adicionarBiblioteca(const Biblioteca &bi){
+	if (quantBiblio == 0){
+		cadastrarLista(bi);
+	} else {
+		
+		Biblioteca *aux2 = new Biblioteca[quantBiblio];
+		
+		for(int i = 0; i < quantBiblio; i++){
+			aux2[i] = lBiblioteca[i];
+			}
+			
+		delete [] lBiblioteca;
+		
+		lBiblioteca = new Biblioteca[quantBiblio+1];
+		
+		for(int i = 0; i < quantBiblio; i++){
+			lBiblioteca[i] = aux2[i];
+		}
+			
+		lBiblioteca[quantBiblio] = bi;
+		
+		delete [] aux2;
 	
-	cout << "Biblioteca " << this->biblioteca.getNomeBiblio() << " adicionada com sucesso ao usuario " << endl;
+	cout << "A Biblioteca '" << lBiblioteca[quantBiblio].getNomeBiblio() << "' foi Adicionada ao usuario com sucesso!" << endl;
+			
+	numDeUserAtivos++;
+	quantBiblio++;
+}
 }
 
 ostream &operator<<(ostream &output, const Kindle &kindle){
@@ -68,5 +109,8 @@ void Kindle::imprimirUser() const {
 void Kindle::status(){
 	
 	cout << "Usuario : " << this->user << endl;
-	cout << "Biblioteca : " << this->biblioteca.getNomeBiblio() << endl;
+	for (int i=0;i<quantBiblio;i++)
+	{
+	cout << "Biblioteca : " << this->lBiblioteca[i].getNomeBiblio() << endl;
+	}
 }

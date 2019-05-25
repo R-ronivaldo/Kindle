@@ -59,7 +59,8 @@ void Biblioteca::imprimeBiblio(){
 }
 
 void Biblioteca::imprimeLLivros()
-{
+{	
+	cout << "Quantidade de livros adicionados: " << numDeLivrosAtivos << endl;
 	for (int i=0;i<quantLivros;i++)
 	{
 		cout << "Nome do "<< i+1 << " Livro : " << this->lLivros[i].getNomeLivro() << endl;	
@@ -160,4 +161,25 @@ Livro Biblioteca::operator[](int subscript)const
 	}
 	
 	return lLivros[subscript];
+}
+
+bool Biblioteca::operator<(const Biblioteca &biblioteca)const{
+	if (quantLivros < biblioteca.quantLivros)
+	{
+		return true;
+	} else
+	{
+		return false;
+	}
+}
+
+Biblioteca &Biblioteca::operator+=(const Biblioteca &bi)
+{
+	string no;
+	cout << "Insira o nome da biblioteca: ";
+	cin >> no;
+	nomeBiblio = no;
+	numDeLivrosAtivos = bi.numDeLivrosAtivos;
+	quantLivros = bi.quantLivros;
+	lLivros = bi.lLivros;
 }

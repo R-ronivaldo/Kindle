@@ -19,66 +19,22 @@ int main(int argc, char** argv) {
 	Kindle kindle1 (objL);
 	kindle1.imprimirUser();
 	
-	/*cout << endl;
-	cout << endl;
-	cout << endl;
-	cout <<"*******Imprimindo pelo operador*******" << endl;
- 	cout << kindle1;
- 	cout << "*******Fim imprimindo operador*******" << endl;
-	cout << endl;
-	cout << endl;
-	cout << endl;
-	*/
-	
 	cout << "Insira o nome da Biblioteca :";
 	cin >> objB;
 	Biblioteca biblio1(objB);
-	kindle1.addBiblioteca(biblio1);
-	
-	/*cout << endl;
-	cout << endl;
-	cout << endl;
-	cout <<"*******Imprimindo pelo operador*******" << endl;
- 	cout << biblio1;
- 	cout << "*******Fim imprimindo operador*******" << endl;
-	cout << endl;
-	cout << endl;
-	cout << endl;
-	*/
+	kindle1.adicionarBiblioteca(biblio1);
 	
 	Livro livro1("HarryPotter","J.K","Fantasia1");
 	Livro livro2("HarryPotter2","J.K2","Fantasia2");
 	Livro livro3("HarryPotter3","J.K3","Fantasia3");
-	Livro livro4("HarryPotter4","J.K4","Fantasia4");
 	Livro livro5("HarryPotter5","J.K5","Fantasia5");
 	Livro livro6("HarryPotter6","J.K6","Fantasia6");
 	Livro livro7("HarryPotter7","J.K7","Fantasia7");
 	Livro livro8("HarryPotter8","J.K8","Fantasia8");
 	Livro livro9("HarryPotter9","J.K9","Fantasia9");
 	Livro livro10("HarryPotter13","J.K13","Fantasia13");
-	
-	
-	/*cout << endl;
-	cout << endl;
-	cout << endl;
-	cout << "-------------------------------" <<endl;
-	
-	if (livro1 == livro2){
-		cout << "Operador == afirmando: Livro Iguais" << endl;
-	} else {
-		cout << "Operador == afirmando: Livros Diferentes" << endl;
-	}
-	cout << "-------------------------------" <<endl;
-	if (livro1 != livro2){
-		cout << "Operador != afirmando: Livro Diferentes" << endl;
-	} else {
-		cout << "Operador != afirmando: Livro Iguais" << endl;
-	}
-	cout << "-------------------------------" <<endl;
-	cout << endl;
-	cout << endl;
-	cout << endl;
-	*/
+	Livro livro4;
+	livro4 += livro3;
 	
 	
 	biblio1.adicionarLivro(livro1);	
@@ -102,17 +58,16 @@ int main(int argc, char** argv) {
 	biblio1.adicionarLivro(livro10);
 	
 	biblio1.imprimeBiblio();
-	
-	/*cout << endl;
-	cout << endl;
-	cout << endl;
-	cout <<"*******Imprimindo pelo operador*******" << endl;
- 	cout << livro1;
- 	cout << "*******Fim imprimindo operador*******" << endl;
-	cout << endl;
-	cout << endl;
-	cout << endl;
-	
-*/
 
+	Biblioteca biblio2;
+	biblio2 += biblio1;	
+	
+	biblio2.adicionarLivro(livro1);
+	biblio2.imprimeBiblio();
+	
+	if (biblio1 < biblio2){
+		cout << "Biblioteca 2 e maior";
+	} else {
+		cout << "Biblioteca 1 e maior";
+	}
 }

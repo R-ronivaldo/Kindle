@@ -18,9 +18,9 @@ class Kindle
 		
 		string getUser();
 		void setUser(const string &);
-
-		Biblioteca getBiblioteca();
-		void addBiblioteca(Biblioteca &);
+		
+		void adicionarBiblioteca(const Biblioteca &);
+		void cadastrarLista(const Biblioteca &);
 		
 		void imprimirUser()const;
 		
@@ -28,7 +28,9 @@ class Kindle
 		
 	private:
 		string user;
-		Biblioteca biblioteca;
+		
+		Biblioteca *lBiblioteca;
+		int quantBiblio;
 		
 		static int numDeUserAtivos;
 		static const int MAXUSER = 1;

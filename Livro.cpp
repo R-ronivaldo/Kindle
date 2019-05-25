@@ -96,4 +96,21 @@ bool Livro::operator!=(const Livro &livro)const{
 	return ! (*this == livro);
 }
 
+bool Livro::operator<(const Livro &livro)const
+{
+	
+}
 
+const Livro &Livro::operator+= (const Livro &livro)
+{
+	string no,ge;
+	autorLivro = livro.autorLivro;
+	cout << "Informe o nome do Livro do autor: " << this->autorLivro;
+	cin >> no;
+	nomeLivro = no;
+	
+	cout << "Informe o genero do livro do autor: " << this->autorLivro;
+	cin >> ge;
+	generoLivro = ge;
+		
+}

@@ -28,8 +28,10 @@ class Livro
 		void status() const;
 		void imprimirLivro() const;
 		
+		const Livro &operator+= (const Livro &);
 		bool operator==(const Livro &)const;
 		bool operator!=(const Livro &)const;
+		bool operator<(const Livro &)const;
 		
 	private:
 		string nomeLivro;

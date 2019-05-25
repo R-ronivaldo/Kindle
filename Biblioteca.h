@@ -28,8 +28,10 @@ class Biblioteca
 		
 		bool operator==(const Biblioteca &)const;
 		const Biblioteca &operator=(const Biblioteca &);
+		Biblioteca &operator+=(const Biblioteca &);
 		Livro &operator[](int);
 		Livro operator[](int subscript)const;
+		bool operator<(const Biblioteca &)const;
 		void cadastrarLista(const Livro &);
 		void adicionarLivro(const Livro &);
 		
