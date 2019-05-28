@@ -74,6 +74,7 @@ void Biblioteca::cadastrarLista(const Livro &livro){
 		quantLivros++;
 		lLivros = new Livro[quantLivros];
 		lLivros[0] = livro;
+		cout << "Livro " << lLivros[0].getNomeLivro() << " adicionado! com sucesso!" << endl;
 		numDeLivrosAtivos++;
 }
 
@@ -98,6 +99,7 @@ void Biblioteca::adicionarLivro(const Livro &livro){
 		}
 			
 		lLivros[quantLivros] = livro;
+		cout << "Livro " << lLivros[quantLivros].getNomeLivro() << " adicionado com sucesso!" << endl;
 		
 		delete [] aux2;
 		

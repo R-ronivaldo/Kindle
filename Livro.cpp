@@ -10,19 +10,22 @@ using std::endl;
 
 static int restricao = true;
 
-Livro::Livro(const string &no, const string &au, const string &ge){
+Livro::Livro(const string &no, const string &au, const string &ge,int ano){
 	setNomeLivro(no);
 	setAutorLivro(au);
 	setGeneroLivro(ge);
+	setAnoLan(ano);
 }
 Livro::Livro(){
 	const string no = "Desconhecidooo";
 	const string au = "Desconhecidooo";
 	const string ge = "Desconhecidooo";
+	int ano = 0;
 	
 	setNomeLivro(no);
 	setAutorLivro(au);
 	setGeneroLivro(ge);
+	setAnoLan(ano);
 	
 }
 
@@ -31,6 +34,7 @@ Livro::Livro(const Livro &link){
 	nomeLivro = link.nomeLivro;
 	autorLivro = link.autorLivro;
 	generoLivro = link.generoLivro;
+	anoLan = link.anoLan;
 }
 
 Livro::~Livro(){
@@ -60,6 +64,14 @@ void Livro::setGeneroLivro(const string &ge){
 	this->generoLivro = ge;
 }
 
+int Livro::getAnoLan(){
+	return anoLan;
+}
+
+void Livro::setAnoLan(int ano){
+	this->anoLan = ano;
+}
+
 //Fim Get/Set
 
 void Livro::status() const {
@@ -69,7 +81,8 @@ void Livro::status() const {
 ostream &operator<<(ostream	 &output, const Livro &livro){
 	output << "Nome Livro: " << livro.nomeLivro << "."
 	<< endl << "Autor do Livro: "<< livro.autorLivro << "."
-	<< endl << "Genero do Livro: " << livro.generoLivro << "." << endl;
+	<< endl << "Genero do Livro: " << livro.generoLivro << "."
+	<< endl << "Ano de Lancamento: " << livro.anoLan << "." << endl;
 	
 	return output; 
 }
@@ -80,12 +93,13 @@ void Livro::imprimirLivro() const{
 	cout<< "Livro :" << nomeLivro << endl;
 	cout<< "Autor :" << autorLivro << endl;
 	cout<< "Genero :" << generoLivro << endl;
+	cout<< "Ano Lancamento :" << anoLan << endl;
 	cout << "###########################" << endl;
 	
 }
 
 bool Livro::operator==(const Livro &livro)const{
-	if (nomeLivro != livro.nomeLivro || autorLivro != livro.autorLivro || generoLivro != livro.generoLivro) {
+	if (nomeLivro != livro.nomeLivro || autorLivro != livro.autorLivro || generoLivro != livro.generoLivro || anoLan != livro.anoLan) {
 		return false;
 	} else {
 		return true;
@@ -96,15 +110,12 @@ bool Livro::operator!=(const Livro &livro)const{
 	return ! (*this == livro);
 }
 
-bool Livro::operator<(const Livro &livro)const
-{
-	
-}
-
-const Livro &Livro::operator+= (const Livro &livro)
-{
+const Livro &Livro::operator+= (const Livro &llivro){
 	string no,ge;
-	autorLivro = livro.autorLivro;
+	int ano;
+	
+	autorLivro = llivro.autorLivro;
+	
 	cout << "Informe o nome do Livro do autor: " << this->autorLivro;
 	cin >> no;
 	nomeLivro = no;
@@ -112,5 +123,17 @@ const Livro &Livro::operator+= (const Livro &livro)
 	cout << "Informe o genero do livro do autor: " << this->autorLivro;
 	cin >> ge;
 	generoLivro = ge;
+	
+	cout << "Informe o ano de lancamento do livro do autor: " << this->autorLivro;
+	cin >> ano;
+	anoLan = ano;
 		
+}
+
+bool Livro::operator<(const Livro &livro){
+	if (anoLan < livro.anoLan){
+		return true;
+	} else {
+		return false;
+	}
 }
