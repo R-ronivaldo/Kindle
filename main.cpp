@@ -121,6 +121,7 @@ int main(int argc, char** argv) {
 				break;
 			case 3:
 				system("cls");
+				cout << biblio1;
 				biblio1.imprimeLLivros();
 					do {
 						string op1s;

@@ -15,15 +15,11 @@ class Kindle
 		Kindle();
 		Kindle(const Kindle &);
 		~Kindle();
-		
 		string getUser();
 		void setUser(const string &);
-		
 		void adicionarBiblioteca(const Biblioteca &);
 		void cadastrarLista(const Biblioteca &);
-		
 		void imprimirUser()const;
-		
 		void status();
 		
 	private:

@@ -110,6 +110,12 @@ void Biblioteca::adicionarLivro(const Livro &livro){
 
 ostream &operator<<(ostream &output, const Biblioteca &biblioteca){
 	output << "Biblioteca :" << biblioteca.nomeBiblio << endl;
+	output << "Quantidade de livros: " << biblioteca.quantLivros << endl;
+	
+		for (int i =0; i < biblioteca.quantLivros; i++){
+			output << i+1 << "o Livro: "<< biblioteca.lLivros[i].getNomeLivro() << endl;
+		}
+	
 	return output;
 }
 
