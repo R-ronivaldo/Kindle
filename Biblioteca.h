@@ -22,6 +22,7 @@ class Biblioteca
 		//Get/Set
 		string getNomeBiblio();
 		void setNomeBiblio(const string &);
+		int getQuantLivros();
 		
 		void imprimeBiblio();
 		void imprimeLLivros();

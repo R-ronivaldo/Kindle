@@ -51,6 +51,10 @@ void Biblioteca::setNomeBiblio(const string &no){
 	this->nomeBiblio = no;
 }
 
+int Biblioteca::getQuantLivros(){
+	return this->quantLivros;
+}
+
 void Biblioteca::imprimeBiblio(){
 	
 	cout << "+++++ Informações sobre a Biblioteca +++++" << endl;

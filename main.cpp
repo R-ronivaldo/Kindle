@@ -17,14 +17,14 @@ int main(int argc, char** argv) {
 	
 	cout << "Insira o nome do Usuario :";
 	cin >> objL;
-	Kindle kindle1 (objL);
-	cout << kindle1;
+	LeitorDigital leitor1 (objL);
+	cout << leitor1;
 	
 	
 	cout << "Insira o nome da Biblioteca :";
 	cin >> objB;
 	Biblioteca biblio1(objB);
-	kindle1.adicionarBiblioteca(biblio1);
+	leitor1.adicionarBiblioteca(biblio1);
 	cout << biblio1;
 			
 	Livro livro1("HarryPotter1","J.K","Fantasia1",2010);
